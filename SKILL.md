@@ -76,9 +76,10 @@ metadata:
 - 标题公式：`[核心词]+[品牌]+[属性/克重/香型]+[场景]+[卖点]+[情绪/信任词]`，60-80字符，越南语名词在前。
 - 标题3版(搜索/转化/引流) + 5卖点 + 短/长描述 + hashtag。
 
-### 7. 短视频脚本
+### 7. 短视频脚本 + 成片
 - 15 AI 脚本（六要素提示词：画面/口播/字幕/风格/BGM/比例）。
 - 5 真人工作流（拍产品实拍图 → AI生成 → 剪辑）。
+- 成片：脚本 → `xianyu110/ecommerce-video-skills`（免费 MIT，本地 ffmpeg+edge-tts）→ 分镜 storyboard.json → 越南语配音(vi-VN-HoaiMyNeural) → 一键成片 9:16 MP4，见 `references/video-pipeline.md`。
 
 ### 8. 全阶段 SOP
 0-1 / 1-10 / 10-99 / 99-100 / 100+ 五阶段，按 `references/operating-playbook.md` 总纲（阶段/时间/进程/nexscope框架映射/门禁/PLAN B-C 对齐）。
@@ -135,6 +136,10 @@ metadata:
 
 ## 完整知识库索引（全部内置，自包含）
 
+### 总图与置信度
+- `总图.md`：0-100+ 工作流程 mermaid 总图（出品流程 + 工作流程 + 视频成片 + nexscope 框架落点 + 时间线）。
+- `references/confidence-labels.md`：所有关键数字四档标注（官方/实测/假设/设定），假设档必须待回填。
+
 ### 白皮书（交付文件使用说明）
 - `使用说明白皮书.md`：交付包总览 + 11份文档/7张表格/3类素材的「一句话 / 什么时候用 / 怎么用 / 怎么判断」，是交付标准，每次改动交付文件必须同步更新。
 
@@ -154,6 +159,9 @@ metadata:
 ### 选品 / 货源 / 合规
 - `references/selection-and-sourcing.md`：选品七维 + 1688/义乌购货源。
 - `references/fulfillment-and-service.md`：履约、补货、售后、退货、差评 SOP。
+
+### 短视频成片
+- `references/video-pipeline.md`：脚本→分镜→镜头→越南语配音→ffmpeg一键成片（xianyu110/ecommerce-video-skills，MIT 免费）。
 
 ### 内容 / 文案 / 流量
 - `references/listing-and-copy.md`：标题公式 + 卖点 + 描述。
