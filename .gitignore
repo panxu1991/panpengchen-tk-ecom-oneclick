@@ -1,0 +1,8 @@
+# Python
+__pycache__/
+*.pyc
+
+# 视频渲染临时/生成产物（成片与字幕不入库，可用 storyboard 重新生成）
+build/
+*.mp4
+*.srt

@@ -298,11 +298,12 @@ def main():
             cues.append({"start": st + 0.2, "end": st + d, "text": loc(s, "cta"), "style": "CTA"})
     timing = {"size": [w, h], "total": total, "starts": [float(x) for x in starts], "durations": durs,
               "voice": vdur, "cues": cues}
-    json.dump(timing, open(os.path.join(a.build, "timing.json"), "w"), ensure_ascii=False, indent=1)
+    json.dump(timing, open(os.path.join(a.build, "timing.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     ass, srt = make_subs.build(timing, a.font)
     assp = os.path.join(a.build, "subs.ass")
     open(assp, "w", encoding="utf-8").write(ass)
-    open(os.path.splitext(a.out)[0] + ".srt", "w", encoding="utf-8").write(srt)
+    out_abs = os.path.abspath(a.out)  # resolve before chdir, else relative -o lands in build/
+    open(os.path.splitext(out_abs)[0] + ".srt", "w", encoding="utf-8").write(srt)
     vf = [] if a.no_subs else ["-vf", "ass=subs.ass"]
     cwd = os.getcwd()
     os.chdir(a.build)  # ass filter can't parse Windows drive-letter colons; use relative path
@@ -310,7 +311,7 @@ def main():
         run(["ffmpeg", "-y", "-v", "error", "-i", "video_noaudio.mp4", "-i", "mix_norm.wav", *vf,
              "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(a.fps),
              "-c:a", "aac", "-b:a", "160k", "-ac", "2", "-movflags", "+faststart", "-t", f"{total:.3f}",
-             os.path.abspath(a.out)])
+             out_abs])
     finally:
         os.chdir(cwd)
     print(f"done -> {a.out}  ({total:.1f}s, {w}x{h})  subtitles -> {os.path.splitext(a.out)[0]}.srt")

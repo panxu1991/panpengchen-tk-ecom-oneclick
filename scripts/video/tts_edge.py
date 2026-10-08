@@ -13,6 +13,14 @@ Results are cached by (text, voice, rate, pitch) so re-runs are instant.
 Needs: pip install edge-tts ; ffmpeg on PATH ; network access to the Edge TTS service.
 """
 import argparse, asyncio, hashlib, json, os, subprocess, sys
+# Windows console may default to GBK; force UTF-8 so Vietnamese/CJK prints don't crash.
+if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
+    for _s in (sys.stdout, sys.stderr):
+        try:
+            _s.reconfigure(encoding='utf-8')
+        except Exception:
+            pass
+
 
 DEFAULT_VOICE = "zh-CN-YunxiNeural"
 TRIM = ("silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
@@ -50,7 +58,7 @@ def synth_line(text, out_wav, voice=DEFAULT_VOICE, rate="+0%", pitch="+0Hz", ret
         raise RuntimeError(f"edge-tts failed for {text!r}: {last}")
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", mp3, "-af", TRIM, "-ar", "48000", "-ac", "1", out_wav],
                    check=True)
-    open(stamp, "w").write(key)
+    open(stamp, "w", encoding="utf-8").write(key)
     return probe_duration(out_wav)
 
 
