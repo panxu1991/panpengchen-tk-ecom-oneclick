@@ -79,7 +79,7 @@ metadata:
 ### 7. 短视频脚本 + 成片
 - 15 AI 脚本（六要素提示词：画面/口播/字幕/风格/BGM/比例）。
 - 5 真人工作流（拍产品实拍图 → AI生成 → 剪辑）。
-- 成片：脚本 → `xianyu110/ecommerce-video-skills`（免费 MIT，本地 ffmpeg+edge-tts）→ 分镜 storyboard.json → 越南语配音(vi-VN-HoaiMyNeural) → 一键成片 9:16 MP4，见 `references/video-pipeline.md`。
+- 成片：脚本/图片/成片三层受 `references/video-methodology.md` 纲领约束（5-beat 结构 + AI 出图不出字 + 产品只用真实图 + 人物/产品一致性解法）；执行用 `xianyu110/ecommerce-video-skills`（免费 MIT，本地 ffmpeg+edge-tts，脚本已复制到 `scripts/video/`）→ 越南语配音(vi-VN-HoaiMyNeural) → 一键成片 9:16 MP4，见 `references/video-pipeline.md`。
 
 ### 8. 全阶段 SOP
 0-1 / 1-10 / 10-99 / 99-100 / 100+ 五阶段，按 `references/operating-playbook.md` 总纲（阶段/时间/进程/nexscope框架映射/门禁/PLAN B-C 对齐）。
@@ -161,7 +161,10 @@ metadata:
 - `references/fulfillment-and-service.md`：履约、补货、售后、退货、差评 SOP。
 
 ### 短视频成片
-- `references/video-pipeline.md`：脚本→分镜→镜头→越南语配音→ffmpeg一键成片（xianyu110/ecommerce-video-skills，MIT 免费）。
+- `references/video-methodology.md`：短视频方法论整体纲领（5-beat + 脚本/图片/成片三层约束 + 人物错位/产品不符解法）。
+- `references/video-pipeline.md`：脚本→分镜→镜头→越南语配音→ffmpeg一键成片（xianyu110 执行器，MIT 免费）。
+- `scripts/video/`：xianyu110 的 9 个本地渲染脚本（assemble.py 等，无需 API Key）。
+- `references/video-skills/`：xianyu110 的 13 个技能说明（执行器）。
 
 ### 内容 / 文案 / 流量
 - `references/listing-and-copy.md`：标题公式 + 卖点 + 描述。
