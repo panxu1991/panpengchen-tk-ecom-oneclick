@@ -72,6 +72,7 @@ metadata:
 - 真实产品图 rembg 抠白多体位。
 - AI 只出**无字**场景/真人底图（提示词强制 no text/no letters）。
 - 越南语 PIL+Arial 程序化叠字（先 underthesea 分词校验），音调零错误。
+- **出图方法论（`references/image-methodology.md`，蒸馏自 ecommerce-image-skills）：产品身份锁定 + 平台规格 + 模型路由(Flare/Sunburst) + 脚本确定性验证**；12 个出图技能在 `references/image-skills/`（白底主图/场景/模特/多角度/卖点图/促销图/尺寸图/A+/详情长图/小红书封面/批量换背景）。白底合规用 `check_main_image.py` 检查，详情长图用 `stitch_long_image.py` 拼接。铁律：要保 Logo/文字的成品图一定用 Sunburst，产品身份锁定逐条粘进每个提示词。
 
 ### 6. 文案
 - 标题公式：`[核心词]+[品牌]+[属性/克重/香型]+[场景]+[卖点]+[情绪/信任词]`，60-80字符，越南语名词在前。
